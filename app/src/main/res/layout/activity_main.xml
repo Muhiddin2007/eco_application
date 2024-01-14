@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/headerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="Xush kelibsiz"
+        android:textSize="30sp"
+        android:textColor="#EBF5F4"
+        android:fontFamily="@font/sourcesansprosemibold"
+        android:gravity="center"
+        android:background="#0C9488"/>
+
+    <!-- Body -->
+    <LinearLayout
+        android:id="@+id/bodyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerTextView"
+        android:orientation="horizontal">
+
+        <!-- Bottle -->
+        <RelativeLayout
+            style="@style/CardStyle">
+
+            <!-- Photo -->
+            <ImageView
+                android:id="@+id/photoImageViewBottle"
+                android:layout_width="129dp"
+                android:layout_height="124dp"
+                android:src="@drawable/image1"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"/>
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/nameTextViewBottle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Baklashka"
+                android:textSize="22sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_below="@id/photoImageViewBottle"
+                android:fontFamily="@font/sourcesansprosemibold"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Count -->
+            <TextView
+                android:id="@+id/countTextViewBottle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Soni: 0 ta"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_below="@id/nameTextViewBottle"
+                android:fontFamily="@font/sourcesansproregular"
+                android:layout_marginTop="2dp"/>
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/priceTextViewBottle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Narxi: 0 so’m"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_below="@id/countTextViewBottle"
+                android:fontFamily="@font/sourcesansproregular"
+                android:layout_marginTop="2dp"/>
+
+        </RelativeLayout>
+
+
+        <!-- Thin line 2 -->
+        <View
+            style="@style/LineStyle" />
+
+        <!-- Cigarette -->
+        <RelativeLayout
+            style="@style/CardStyle">
+
+            <!-- Photo -->
+            <ImageView
+                android:id="@+id/photoImageViewCigarette"
+                android:layout_width="129dp"
+                android:layout_height="124dp"
+                android:src="@drawable/cigaratte"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"/>
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/nameTextViewCigarette"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sigareta"
+                android:textSize="22sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_below="@id/photoImageViewCigarette"
+                android:fontFamily="@font/sourcesansprosemibold"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Count -->
+            <TextView
+                android:id="@+id/countTextViewCigarette"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Soni: 0 ta"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_below="@id/nameTextViewCigarette"
+                android:fontFamily="@font/sourcesansproregular"
+                android:layout_marginTop="2dp"/>
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/priceTextViewCigarette"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Narxi: 0 so’m"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_below="@id/countTextViewCigarette"
+                android:fontFamily="@font/sourcesansproregular"
+                android:layout_marginTop="2dp"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <LinearLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|end"
+        android:background="#0C9488">
+
+        <!-- Text showing total sum of products -->
+        <TextView
+            android:id="@+id/totalSumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jami: 0 so’m"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:fontFamily="@font/sourcesansprosemibold"
+            android:layout_marginRight="16dp"/>
+
+        <!-- Finish button -->
+        <TextView
+            android:id="@+id/finishButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yakunlash"
+            android:textSize="20sp"
+            android:textColor="#0C9488"
+            android:background="@drawable/button_background"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/sourcesansprosemibold"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
