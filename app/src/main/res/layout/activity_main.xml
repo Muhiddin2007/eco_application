@@ -8,23 +8,27 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Header -->
-    <TextView
-        android:id="@+id/headerTextView"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:text="Xush kelibsiz"
-        android:textSize="30sp"
-        android:textColor="#EBF5F4"
-        android:fontFamily="@font/sourcesansprosemibold"
-        android:gravity="center"
-        android:background="#0C9488"/>
+    <Button
+        android:id="@+id/captureImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salafan berish"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#0C9488"
+        android:fontFamily="@font/sourcesansprosemibold"/>
 
     <!-- Body -->
     <LinearLayout
         android:id="@+id/bodyLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/headerTextView"
+        android:layout_below="@id/captureImageButton"
         android:orientation="horizontal">
 
         <!-- Bottle -->
