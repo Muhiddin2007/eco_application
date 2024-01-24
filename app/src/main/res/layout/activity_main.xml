@@ -10,18 +10,18 @@
     <!-- Header -->
     <Button
         android:id="@+id/captureImageButton"
-        android:layout_width="wrap_content"
+        android:layout_width="258dp"
         android:layout_height="wrap_content"
-        android:text="Salafan berish"
-        android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
+        android:fontFamily="@font/sourcesansprosemibold"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp"
         android:paddingTop="5dp"
+        android:paddingEnd="15dp"
         android:paddingBottom="5dp"
-        android:textColor="#0C9488"
-        android:fontFamily="@font/sourcesansprosemibold"/>
+        android:text="Salafan berish"
+        android:textColor="#0C9488" />
 
     <!-- Body -->
     <LinearLayout
@@ -38,8 +38,8 @@
             <!-- Photo -->
             <ImageView
                 android:id="@+id/photoImageViewBottle"
-                android:layout_width="129dp"
-                android:layout_height="124dp"
+                android:layout_width="329dp"
+                android:layout_height="324dp"
                 android:src="@drawable/image1"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"/>
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Baklashka"
-                android:textSize="22sp"
+                android:textSize="32sp"
                 android:textColor="#000000"
                 android:gravity="center"
                 android:layout_below="@id/photoImageViewBottle"
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Soni: 0 ta"
-                android:textSize="16sp"
+                android:textSize="26sp"
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_below="@id/nameTextViewBottle"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Narxi: 0 so’m"
-                android:textSize="16sp"
+                android:textSize="26sp"
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_below="@id/countTextViewBottle"
@@ -97,8 +97,8 @@
             <!-- Photo -->
             <ImageView
                 android:id="@+id/photoImageViewCigarette"
-                android:layout_width="129dp"
-                android:layout_height="124dp"
+                android:layout_width="329dp"
+                android:layout_height="324dp"
                 android:src="@drawable/cigaratte"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"/>
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sigareta"
-                android:textSize="22sp"
+                android:textSize="32sp"
                 android:textColor="#000000"
                 android:gravity="center"
                 android:layout_below="@id/photoImageViewCigarette"
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Soni: 0 ta"
-                android:textSize="16sp"
+                android:textSize="26sp"
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_below="@id/nameTextViewCigarette"
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Narxi: 0 so’m"
-                android:textSize="16sp"
+                android:textSize="26sp"
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_below="@id/countTextViewCigarette"

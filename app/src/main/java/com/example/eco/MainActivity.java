@@ -22,6 +22,11 @@ import java.io.OutputStream;
 import java.util.UUID;
 import android.content.Intent;
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.KeyEvent;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,12 +41,60 @@ public class MainActivity extends AppCompatActivity {
     private static int total_sum = 0;
 
     private static int showCard = 1;
+    private boolean canExit = false;
 
     private TextView countTextViewBottle;
 
 //    private View greetingLayout;
 //    private View cardPageLayout;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        showExitConfirmationDialog();
+    }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_HOME) {
+            showExitConfirmationDialog();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void showExitConfirmationDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Exit")
+                .setMessage("Are you sure you want to exit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        canExit = true; // Set the flag to allow exit
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User cancelled, do nothing
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        canExit = false; // Reset the flag when the app resumes
+    }
+
+    @Override
+    public void finish() {
+        if (canExit) {
+            super.finish();
+        }
+        // Do nothing if the flag is not set
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        String deviceAddress = "00:21:11:01:55:71"; // Replace with your Bluetooth module's MAC address
+        String deviceAddress = "00:21:11:01:55:71";
         bluetoothDevice = bluetoothAdapter.getRemoteDevice(deviceAddress);
 
         try {

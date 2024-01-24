@@ -5,5 +5,8 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Eco" parent="Base.Theme.Eco" />
+    <!-- Merge Theme.Eco with @android:style/Theme.Holo.NoActionBar.Fullscreen -->
+    <style name="Theme.Eco" parent="Base.Theme.Eco">
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
