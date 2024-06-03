@@ -8,6 +8,14 @@
         <item name="android:titleMargin">8dp</item>
         <!-- Add other styles for your cards as needed -->
     </style>
+    <style name="WhiteBackgroundDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">#FFFFFF</item>
+        <item name="android:colorAccent">#000000</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+
+    </style>
 
     <style name="LineStyle">
         <item name="android:layout_width">2dp</item>

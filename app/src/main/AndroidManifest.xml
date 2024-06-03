@@ -36,6 +36,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".GratitudeActivity"
+            android:exported="true" />
+        <activity
             android:name=".CameraPreviewActivity"
             android:exported="true"/>
         <provider

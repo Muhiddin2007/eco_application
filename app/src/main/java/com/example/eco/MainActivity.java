@@ -19,7 +19,10 @@ import androidx.core.content.ContextCompat;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.logging.Logger;
+
 import android.content.Intent;
 import android.Manifest;
 import android.app.AlertDialog;
@@ -27,7 +30,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
-
+import android.app.AlertDialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextView;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,10 +112,13 @@ public class MainActivity extends AppCompatActivity {
 
         connectBluetooth();
 
+
+
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendMessage("0");
+                startActivity(new Intent(MainActivity.this, GratitudeActivity.class));
             }
         });
 
@@ -116,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
 
-        Button captureImageButton = findViewById(R.id.captureImageButton);
-        captureImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMessage("1");
-            }
-        });
+//        Button captureImageButton = findViewById(R.id.captureImageButton);
+//        captureImageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sendMessage("1");
+//            }
+//        });
 
     }
 
@@ -227,28 +238,33 @@ public class MainActivity extends AppCompatActivity {
             String readMessage = (String) msg.obj;
             String[] cardData = readMessage.split("\\|");
 
-// Convert string values to integers
-            int countBottle = Integer.parseInt(cardData[0]);
-            int countCigarette = Integer.parseInt(cardData[2]);
 
-// Multiply the counts by 150
-            int priceBottle = countBottle * 100;
-            int priceCigarette = countCigarette * 50;
+            if (cardData.length > 2){
+                int countBottle = Integer.parseInt(cardData[0]);
+                int countCigarette = Integer.parseInt(cardData[2]);
 
-            total_sum =  priceBottle + priceCigarette;
+                int priceBottle = countBottle * 100;
+                int priceCigarette = countCigarette * 50;
 
-            TextView countTextViewBottle = findViewById(R.id.countTextViewBottle);
-            TextView priceTextViewBottle = findViewById(R.id.priceTextViewBottle);
-            countTextViewBottle.setText("Soni: " + countBottle + " ta");
-            priceTextViewBottle.setText("Narxi: " + priceBottle + " so’m");
+                total_sum =  priceBottle + priceCigarette;
 
-            TextView countTextViewCigarette = findViewById(R.id.countTextViewCigarette);
-            TextView priceTextViewCigarette = findViewById(R.id.priceTextViewCigarette);
-            countTextViewCigarette.setText("Soni: " + countCigarette + " ta");
-            priceTextViewCigarette.setText("Narxi: " + priceCigarette + " so’m");
+                TextView countTextViewBottle = findViewById(R.id.countTextViewBottle);
+                TextView priceTextViewBottle = findViewById(R.id.priceTextViewBottle);
+                countTextViewBottle.setText("Soni: " + countBottle + " ta");
+                priceTextViewBottle.setText("Narxi: " + priceBottle + " so’m");
 
-            TextView totalSumTextView = findViewById(R.id.totalSumTextView);
-            totalSumTextView.setText("Jami: " + total_sum + " so’m");
+                TextView countTextViewCigarette = findViewById(R.id.countTextViewCigarette);
+                TextView priceTextViewCigarette = findViewById(R.id.priceTextViewCigarette);
+                countTextViewCigarette.setText("Soni: " + countCigarette + " ta");
+                priceTextViewCigarette.setText("Narxi: " + priceCigarette + " so’m");
+
+                TextView totalSumTextView = findViewById(R.id.totalSumTextView);
+                totalSumTextView.setText("Jami: " + total_sum + " so’m");
+            }
+            if (readMessage.length() == 7){
+                showGratitudeDialog();
+            }
+
 
             return true;
         }
@@ -273,4 +289,39 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void showGratitudeDialog() {
+        // Inflate the custom layout
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View dialogView = inflater.inflate(R.layout.dialog_gratitude, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.WhiteBackgroundDialog);
+        builder.setView(dialogView);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        if (dialog.getWindow() != null) {
+            WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+            layoutParams.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.8);
+            layoutParams.height = (int) (getResources().getDisplayMetrics().heightPixels * 0.7);
+            layoutParams.gravity = android.view.Gravity.CENTER;
+            dialog.getWindow().setAttributes(layoutParams);
+        }
+
+
+        // Set a timer to automatically dismiss the dialog after a delay
+        Handler handler = new Handler();
+        int delay = 5000; // Delay in milliseconds (e.g., 5 seconds)
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (dialog.isShowing()) {
+                    dialog.dismiss(); // Dismiss the dialog after the delay
+                }
+            }
+        }, delay);
+    }
+
 }
